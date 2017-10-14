@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 47.444 s <<< FAILURE! - in TestSuite
+invalidLoginTest_EmptyUserEmptyPassword(tests.LoginTests)  Time elapsed: 6.662 s  <<< FAILURE!
+java.lang.AssertionError: expected [WRONG MESSAGE FOR FAILURE!] but found [Bu alanın doldurulması zorunludur.]
+	at tests.LoginTests.invalidLoginTest_EmptyUserEmptyPassword(LoginTests.java:57)
+
