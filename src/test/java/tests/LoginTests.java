@@ -12,6 +12,8 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import utils.ExtentReports.ExtentTestManager;
 import utils.Listeners.TestListener;
 
+//In order to eliminate attachment problem for Allure, you should add @Listener line.
+//link: https://github.com/allure-framework/allure1/issues/730
 @Listeners({ TestListener.class })
 @Epic("Regression Tests")
 @Feature("Login Tests")
