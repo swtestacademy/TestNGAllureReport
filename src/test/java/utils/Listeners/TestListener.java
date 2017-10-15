@@ -1,6 +1,8 @@
 package utils.Listeners;
 
 import com.relevantcodes.extentreports.LogStatus;
+
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,12 +12,34 @@ import org.testng.ITestResult;
 import tests.BaseTest;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
+import utils.ScreenShotUtil;
 
 
 public class TestListener extends BaseTest implements ITestListener {
 
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
+    }
+
+
+
+    //Text attachments for Allure
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshotPNG () {
+        //return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        return ScreenShotUtil.capturePNG();
+    }
+
+    //Text attachments for Allure
+    @Attachment(value = "{0}", type = "text/plain")
+    public static String saveTextLog (String message) {
+        return message;
+    }
+
+    //HTML attachments for Allure
+    @Attachment(value = "{0}", type = "text/html")
+    public static String attachHtml(String html) {
+        return html;
     }
 
     @Override
@@ -49,6 +73,10 @@ public class TestListener extends BaseTest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed");
+
+        //Allure ScreenShotUtil and SaveTestLog
+        saveScreenshotPNG();
+        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
 
         //Get driver from BaseTest and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();

@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +17,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeClass
+    @BeforeClass (description = "Class Level Setup!")
     public void setup () {
         //Create a Chrome driver. All test classes use this.
         driver = new ChromeDriver();
@@ -26,7 +29,7 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterClass
+    @AfterClass(description = "Class Level Teardown!")
     public void teardown () {
         driver.quit();
     }
