@@ -10,7 +10,6 @@
 
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
-        <jetty.http.port>9000</jetty.http.port>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

@@ -1,7 +1,6 @@
 package utils.Listeners;
 
 import com.relevantcodes.extentreports.LogStatus;
-
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -12,7 +11,6 @@ import org.testng.ITestResult;
 import tests.BaseTest;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
-import utils.ScreenShotUtil;
 
 
 public class TestListener extends BaseTest implements ITestListener {
@@ -21,13 +19,10 @@ public class TestListener extends BaseTest implements ITestListener {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
-
-
     //Text attachments for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
-    public byte[] saveScreenshotPNG () {
-        //return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-        return ScreenShotUtil.capturePNG();
+    public byte[] saveScreenshotPNG (WebDriver driver) {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 
     //Text attachments for Allure
@@ -74,16 +69,21 @@ public class TestListener extends BaseTest implements ITestListener {
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println("I am in onTestFailure method " +  getTestMethodName(iTestResult) + " failed");
 
-        //Allure ScreenShotUtil and SaveTestLog
-        saveScreenshotPNG();
-        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
-
         //Get driver from BaseTest and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver webDriver = ((BaseTest) testClass).getDriver();
+        WebDriver driver = ((BaseTest) testClass).getDriver();
 
-        //Take base64Screenshot screenshot.
-        String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)webDriver).
+        //Allure ScreenShotRobot and SaveTestLog
+        if (driver instanceof WebDriver) {
+            System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
+            saveScreenshotPNG(driver);
+        }
+
+        //Save a log on allure.
+        saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
+
+        //Take base64Screenshot screenshot for extent reports
+        String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)driver).
                 getScreenshotAs(OutputType.BASE64);
 
         //Extentreports log and screenshot operations for failed tests.

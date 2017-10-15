@@ -9,7 +9,7 @@ import java.io.*;
  * Credential: Shantonu Sarker on 9/11/16. (Thanks to him.)
  */
 
-public class ScreenShotUtil {
+public class ScreenShotRobot {
 
     public void saveAsImage(byte[] imageAsByteArray, String name) {
         InputStream in = new ByteArrayInputStream(imageAsByteArray);

@@ -3,13 +3,16 @@ package tests;
 import io.qameta.allure.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import utils.ExtentReports.ExtentTestManager;
+import utils.Listeners.TestListener;
 
+@Listeners({ TestListener.class })
 @Epic("Regression Tests")
 @Feature("Login Tests")
 public class LoginTests extends BaseTest {
