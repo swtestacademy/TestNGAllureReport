@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import utilities.Log;
 
 public class BaseTest {
     public WebDriver driver;
@@ -16,6 +17,9 @@ public class BaseTest {
 
     @BeforeClass (description = "Class Level Setup!")
     public void setup () {
+        //Write a Log when tests is starting
+        Log.startLog("Test is starting!");
+
         //Create a Chrome driver. All test classes use this.
         driver = new ChromeDriver();
 
@@ -28,6 +32,8 @@ public class BaseTest {
 
     @AfterClass(description = "Class Level Teardown!")
     public void teardown () {
+        //Write a Log when tests are ending
+        Log.endLog("Test is ending!");
         driver.quit();
     }
 
