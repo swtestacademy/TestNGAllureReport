@@ -9,6 +9,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import tests.BaseTest;
+import utilities.Log;
 import utils.ExtentReports.ExtentManager;
 import utils.ExtentReports.ExtentTestManager;
 
@@ -54,6 +55,7 @@ public class TestListener extends BaseTest implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("I am in onTestStart method " +  getTestMethodName(iTestResult) + " start");
+        Log.info(getTestMethodName(iTestResult) + " test is starting.");
         //Start operation for extentreports.
         ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(),"");
     }
