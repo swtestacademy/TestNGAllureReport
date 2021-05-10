@@ -1,6 +1,8 @@
 package utils.Listeners;
 
+import static utils.ExtentReports.ExtentManager.getExtentReports;
 import static utils.ExtentReports.ExtentTestManager.getTest;
+import static utils.ExtentReports.ExtentTestManager.startTest;
 
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Attachment;
@@ -12,8 +14,6 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import tests.BaseTest;
-import utils.ExtentReports.ExtentManager;
-import utils.ExtentReports.ExtentTestManager;
 import utils.Log;
 
 public class TestListener extends BaseTest implements ITestListener {
@@ -49,8 +49,7 @@ public class TestListener extends BaseTest implements ITestListener {
     public void onFinish(ITestContext iTestContext) {
         System.out.println("I am in onFinish method " + iTestContext.getName());
         //Do tier down operations for ExtentReports reporting!
-        ExtentTestManager.endTest();
-        ExtentManager.getExtentReports().flush();
+        getExtentReports().flush();
     }
 
     @Override
@@ -58,7 +57,7 @@ public class TestListener extends BaseTest implements ITestListener {
         System.out.println("I am in onTestStart method " + getTestMethodName(iTestResult) + " start");
         Log.info(getTestMethodName(iTestResult) + " test is starting.");
         //Start operation for ExtentReports.
-        ExtentTestManager.startTest(iTestResult.getMethod().getMethodName(), "");
+        startTest(iTestResult.getMethod().getMethodName(), "");
     }
 
     @Override

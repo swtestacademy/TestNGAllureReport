@@ -27,4 +27,7 @@ hs_err_pid*
 *.iml
 
 # Maven output
-target/
+target
+allure-results
+extent-reports
+
