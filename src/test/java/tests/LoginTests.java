@@ -1,6 +1,11 @@
 package tests;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.Listeners.TestListener;
@@ -11,28 +16,23 @@ import utils.Listeners.TestListener;
 @Epic("Regression Tests")
 @Feature("Login Tests")
 public class LoginTests extends BaseTest {
-
-    //Test Data
-    String wrongUsername = "onur@swtestacademy.com";
-    String wrongPassword = "11122233444";
-
-    @Test (priority = 0, description="Invalid Login Scenario with wrong username and password.")
+    @Test(priority = 0, description = "Invalid Login Scenario with wrong username and password.")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Test Description: Login test with wrong username and wrong password.")
     @Story("Invalid username and password login test")
-    public void invalidLoginTest_InvalidUserNameInvalidPassword () {
+    public void invalidLoginTest_InvalidUserNameInvalidPassword() {
         homePage
             .goToN11()
             .goToLoginPage()
-            .loginToN11(wrongUsername, wrongPassword)
-            .verifyLoginPassword("E-posta adresiniz veya şifreniz hatalı");
+            .loginToN11("onur@swtestacademy.com", "11122233444")
+            .verifyLogError();
     }
 
-    @Test (priority = 1, description="Invalid Login Scenario with empty username and password.")
+    @Test(priority = 1, description = "Invalid Login Scenario with empty username and password.")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Test Description: Login test with empty username and empty password.")
     @Story("Empty username and password login test")
-    public void invalidLoginTest_EmptyUserEmptyPassword () {
+    public void invalidLoginTest_EmptyUserEmptyPassword() {
         homePage
             .goToN11()
             .goToLoginPage()

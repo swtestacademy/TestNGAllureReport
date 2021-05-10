@@ -9,7 +9,7 @@ import pages.HomePage;
 
 public class BaseTest {
     public WebDriver driver;
-    public HomePage homePage;
+    public HomePage  homePage;
 
     public WebDriver getDriver() {
         return driver;

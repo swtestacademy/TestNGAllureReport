@@ -1,12 +1,14 @@
 package pages;
 
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
+
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import utils.JSErrorLogs;
 
 public class LoginPage extends BasePage {
-
     /**Constructor*/
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -32,7 +34,7 @@ public class LoginPage extends BasePage {
     @Step("Verify username: {0} step...")
     public LoginPage verifyLoginUserName(String expectedText) {
         waitVisibility(errorMessageUsernameXpath);
-        Assert.assertEquals(readText(errorMessageUsernameXpath), expectedText);
+        assertEquals(readText(errorMessageUsernameXpath), expectedText);
         return this;
     }
 
@@ -40,7 +42,14 @@ public class LoginPage extends BasePage {
     @Step("Verify verifyLoginPassword: {0} step...")
     public LoginPage verifyLoginPassword(String expectedText) {
         waitVisibility(errorMessagePasswordXpath);
-        Assert.assertEquals(readText(errorMessagePasswordXpath), expectedText);
+        assertEquals(readText(errorMessagePasswordXpath), expectedText);
+        return this;
+    }
+
+    //Verify Password Condition
+    @Step("Verify logError: {0} step...")
+    public LoginPage verifyLogError() {
+        assertTrue(JSErrorLogs.isLoginErrorLog(driver));
         return this;
     }
 }

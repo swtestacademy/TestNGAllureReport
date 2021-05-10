@@ -1,19 +1,17 @@
 package utils.ExtentReports;
 
-import com.relevantcodes.extentreports.ExtentReports;
-
-//OB: ExtentReports extent instance created here. That instance can be reachable by getReporter() method.
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
+    private static final ExtentReports extentReports = new ExtentReports();
 
-    private static ExtentReports extent;
-
-    public synchronized static ExtentReports getReporter(){
-        if(extent == null){
-            //Set HTML reporting file location
-            String workingDir = System.getProperty("user.dir");
-            extent = new ExtentReports(workingDir+"\\ExtentReports\\ExtentReportResults.html", true);
-        }
-        return extent;
+    public synchronized static ExtentReports getExtentReports() {
+        ExtentSparkReporter reporter = new ExtentSparkReporter("./extent-reports/extent-report.html");
+        reporter.config().setReportName("Sample Extent Report");
+        extentReports.attachReporter(reporter);
+        extentReports.setSystemInfo("Blog Name", "SW Test Academy");
+        extentReports.setSystemInfo("Author", "Onur Baskirt");
+        return extentReports;
     }
 }
