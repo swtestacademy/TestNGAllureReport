@@ -1,8 +1,8 @@
-package utils.Listeners;
+package utils.listeners;
 
-import static utils.ExtentReports.ExtentManager.getExtentReports;
-import static utils.ExtentReports.ExtentTestManager.getTest;
-import static utils.ExtentReports.ExtentTestManager.startTest;
+import static utils.extentreports.ExtentManager.getExtentReports;
+import static utils.extentreports.ExtentTestManager.getTest;
+import static utils.extentreports.ExtentTestManager.startTest;
 
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Attachment;

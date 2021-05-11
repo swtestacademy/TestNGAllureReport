@@ -1,6 +1,6 @@
-package utils.Listeners;
+package utils.listeners;
 
-import static utils.ExtentReports.ExtentTestManager.getTest;
+import static utils.extentreports.ExtentTestManager.getTest;
 
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.OutputType;

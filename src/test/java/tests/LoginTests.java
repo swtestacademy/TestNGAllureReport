@@ -8,7 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.Listeners.TestListener;
+import utils.listeners.TestListener;
 
 //In order to eliminate attachment problem for Allure, you should add @Listener line.
 //link: https://github.com/allure-framework/allure1/issues/730
