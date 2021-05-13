@@ -14,6 +14,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.excelutils.ExcelUtil;
 import utils.listeners.TestListener;
+import utils.logs.Log;
 
 //In order to eliminate attachment problem for Allure, you should add @Listener line.
 //link: https://github.com/allure-framework/allure1/issues/730
@@ -35,6 +36,7 @@ public class LoginTests extends BaseTest {
     public void invalidLoginTest_InvalidUserNameInvalidPassword(Method method) {
         //ExtentReports Description
         startTest(method.getName(), "Invalid Login Scenario with invalid username and password.");
+        Log.info(method.getName() + " test is starting.");
 
         homePage
             .goToN11()
@@ -51,6 +53,7 @@ public class LoginTests extends BaseTest {
     public void invalidLoginTest_EmptyUserEmptyPassword(Method method) {
         //ExtentReports Description
         startTest(method.getName(), "Invalid Login Scenario with empty username and password.");
+        Log.info(method.getName() + " test is starting.");
 
         homePage
             .goToN11()
