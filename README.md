@@ -1,9 +1,10 @@
-# TestNGAllureReport
-TestNGAllureReport
-Article Link: https://www.swtestacademy.com/allure-testng/
 
-This project supports two important test automation reporting framewokrs:
+This Branch has Data Driven Framework in Selenium Support.
 
-**Allure Report**
+**Data Driven Testing in Selenium Article Link**: https://www.swtestacademy.com/data-driven-framework-in-selenium/
 
-**ExtentReports 5**
+Also it has Allure, ExtentReports 5 support.
+
+**Allure and TestNG Article Link**: https://www.swtestacademy.com/allure-report-testng/
+
+**Extent Reports and TestNG Link**: https://www.swtestacademy.com/extentreports-testng/
