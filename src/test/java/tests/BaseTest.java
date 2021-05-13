@@ -18,7 +18,7 @@ public class BaseTest {
 
     @BeforeClass
     public void classLevelSetup() {
-        Log.startLog("Tests is starting!");
+        Log.info("Tests is starting!");
         driver = new ChromeDriver();
     }
 
@@ -29,7 +29,7 @@ public class BaseTest {
 
     @AfterClass
     public void teardown() {
-        Log.endLog("Tests are ending!");
+        Log.info("Tests are ending!");
         driver.quit();
     }
 }

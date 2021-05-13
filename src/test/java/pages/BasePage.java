@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
-    public WebDriver     driver;
-    public WebDriverWait wait;
+    protected WebDriver     driver;
+    protected WebDriverWait wait;
 
     //Constructor
     public BasePage(WebDriver driver) {
