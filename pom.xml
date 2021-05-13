@@ -18,6 +18,10 @@
         <log4j-version>2.14.1</log4j-version>
         <extentreports-version>5.0.8</extentreports-version>
         <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
+        <maven-surefire-plugin-version>3.0.0-M5</maven-surefire-plugin-version>
+        <poi-version>5.0.0</poi-version>
+        <poi-ooxml-version>5.0.0</poi-ooxml-version>
+        <lombok-version>1.18.20</lombok-version>
     </properties>
 
     <dependencies>
@@ -62,6 +66,25 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-ooxml-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok-version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 public class BaseTest {
-    public WebDriver driver;
-    public HomePage  homePage;
+    protected WebDriver driver;
+    protected HomePage  homePage;
 
     public WebDriver getDriver() {
         return driver;

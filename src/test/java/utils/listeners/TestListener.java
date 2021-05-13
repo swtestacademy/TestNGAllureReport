@@ -14,7 +14,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import tests.BaseTest;
-import utils.Log;
+import utils.excelutils.ExcelUtil;
+import utils.logs.Log;
 
 public class TestListener extends BaseTest implements ITestListener {
     private static String getTestMethodName(ITestResult iTestResult) {
@@ -65,6 +66,8 @@ public class TestListener extends BaseTest implements ITestListener {
         System.out.println("I am in onTestSuccess method " + getTestMethodName(iTestResult) + " succeed");
         //ExtentReports log operation for passed tests.
         getTest().log(Status.PASS, "Test passed");
+        //Update the test result on excel sheet
+        ExcelUtil.setCellData("PASSED", ExcelUtil.rowNumber, ExcelUtil.columnNumber);
     }
 
     @Override
@@ -91,6 +94,9 @@ public class TestListener extends BaseTest implements ITestListener {
         //ExtentReports log and screenshot operations for failed tests.
         getTest().log(Status.FAIL, "Test Failed",
             getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+
+        //Update the test result on excel sheet
+        ExcelUtil.setCellData("FAILED", ExcelUtil.rowNumber, ExcelUtil.columnNumber);
     }
 
     @Override
@@ -98,6 +104,8 @@ public class TestListener extends BaseTest implements ITestListener {
         System.out.println("I am in onTestSkipped method " + getTestMethodName(iTestResult) + " skipped");
         //ExtentReports log operation for skipped tests.
         getTest().log(Status.SKIP, "Test Skipped");
+        //Update the test result on excel sheet
+        ExcelUtil.setCellData("SKIPPED", ExcelUtil.rowNumber, ExcelUtil.columnNumber);
     }
 
     @Override
