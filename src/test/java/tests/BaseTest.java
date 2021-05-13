@@ -6,6 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import utils.Log;
 
 public class BaseTest {
     public WebDriver driver;
@@ -17,6 +18,7 @@ public class BaseTest {
 
     @BeforeClass
     public void classLevelSetup() {
+        Log.startLog("Tests is starting!");
         driver = new ChromeDriver();
     }
 
@@ -27,6 +29,7 @@ public class BaseTest {
 
     @AfterClass
     public void teardown() {
+        Log.endLog("Tests are ending!");
         driver.quit();
     }
 }
