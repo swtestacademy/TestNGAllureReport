@@ -18,7 +18,7 @@ public class BaseTest {
 
     @BeforeClass
     public void classLevelSetup() {
-        Log.info("Tests is starting!");
+        Log.info("Tests are starting!");
         driver = new ChromeDriver();
     }
 
