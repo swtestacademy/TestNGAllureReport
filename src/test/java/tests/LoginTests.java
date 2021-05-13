@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.listeners.TestListener;
-import utils.logs.Log;
 
 //In order to eliminate attachment problem for Allure, you should add @Listener line.
 //link: https://github.com/allure-framework/allure1/issues/730
@@ -25,7 +24,6 @@ public class LoginTests extends BaseTest {
     @Description("Test Description: Login test with wrong username and wrong password.")
     @Story("Invalid username and password login test")
     public void invalidLoginTest_InvalidUserNameInvalidPassword(Method method) {
-        Log.info(method.getName() + " test is starting.");
         startTest(method.getName(), "Invalid Login Scenario with invalid username and password.");
 
         homePage
@@ -40,8 +38,8 @@ public class LoginTests extends BaseTest {
     @Description("Test Description: Login test with empty username and empty password.")
     @Story("Empty username and password login test")
     public void invalidLoginTest_EmptyUserEmptyPassword(Method method) {
-        Log.info(method.getName() + " test is starting.");
         startTest(method.getName(), "Invalid Login Scenario with empty username and password.");
+
         homePage
             .goToN11()
             .goToLoginPage()

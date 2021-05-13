@@ -2,7 +2,6 @@ package utils.listeners;
 
 import static utils.extentreports.ExtentManager.getExtentReports;
 import static utils.extentreports.ExtentTestManager.getTest;
-import static utils.extentreports.ExtentTestManager.startTest;
 
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Attachment;
@@ -56,8 +55,6 @@ public class TestListener extends BaseTest implements ITestListener {
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("I am in onTestStart method " + getTestMethodName(iTestResult) + " start");
         Log.info(getTestMethodName(iTestResult) + " test is starting.");
-        //Start operation for ExtentReports.
-        startTest(iTestResult.getMethod().getMethodName(), "");
     }
 
     @Override
