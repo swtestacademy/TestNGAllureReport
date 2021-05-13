@@ -11,8 +11,8 @@ import io.qameta.allure.Story;
 import java.lang.reflect.Method;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.Log;
 import utils.listeners.TestListener;
+import utils.logs.Log;
 
 //In order to eliminate attachment problem for Allure, you should add @Listener line.
 //link: https://github.com/allure-framework/allure1/issues/730
