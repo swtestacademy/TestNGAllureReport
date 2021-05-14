@@ -1,11 +1,14 @@
 package tests;
 
+import static utils.extentreports.ExtentTestManager.startTest;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import java.lang.reflect.Method;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.listeners.TestListener;
@@ -20,7 +23,9 @@ public class LoginTests extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Description("Test Description: Login test with wrong username and wrong password.")
     @Story("Invalid username and password login test")
-    public void invalidLoginTest_InvalidUserNameInvalidPassword() {
+    public void invalidLoginTest_InvalidUserNameInvalidPassword(Method method) {
+        startTest(method.getName(), "Invalid Login Scenario with invalid username and password.");
+
         homePage
             .goToN11()
             .goToLoginPage()
@@ -32,7 +37,9 @@ public class LoginTests extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("Test Description: Login test with empty username and empty password.")
     @Story("Empty username and password login test")
-    public void invalidLoginTest_EmptyUserEmptyPassword() {
+    public void invalidLoginTest_EmptyUserEmptyPassword(Method method) {
+        startTest(method.getName(), "Invalid Login Scenario with empty username and password.");
+
         homePage
             .goToN11()
             .goToLoginPage()
